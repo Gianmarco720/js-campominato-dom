@@ -15,15 +15,23 @@
   <link rel="stylesheet" href="./assets/css/style.css">  
 </head>
 
-<body>
-  <header class="text-center">
-    <h1>CampoMinato</h1>
-    <button class="start_game">Start Game</button>
-    <select name="difficulty" id="difficulty">
-      <option value="easy">Easy</option>
-      <option value="medium">Medium</option>
-      <option value="hard">Hard</option>
-    </select>
+<body class="d-flex flex-column min-vh-100">
+  <header class="text-center bg-white">
+    <div class="container d-flex justify-content-between p-1">
+        <div class="logo d-flex">
+            <img class="img-fluid" src="./assets/img/logo_Boolean.png" alt="">
+            <h1>CampoMinato</h1>
+        </div>
+        <div class="game_option w-25 d-flex align-items-center p-1">
+            <span>Level:</span>
+            <select name="difficulty" id="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+            <button class="btn btn-warning start_game">Start Game</button>
+        </div>
+    </div>
   </header>
   <main class="py-4">
 
@@ -32,8 +40,8 @@
     </div>
 
   </main>
-  <footer>
-    <!-- place footer here -->
+  <footer class="bg-white mt-auto">
+    <h5 class="p-2">Made with &hearts; by Classe 72</h5>
   </footer>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

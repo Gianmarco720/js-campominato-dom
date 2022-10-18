@@ -26,6 +26,10 @@ select {
     align-items: center;
 }
 
+.cell:hover {
+    cursor: default;
+}
+
 .active {
     background-color: blue;
 }

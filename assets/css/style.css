@@ -1,0 +1,22 @@
+body {
+    background-color: palegreen;
+}
+
+.my_container {
+    width: 400px;
+    margin: auto;
+}
+
+.cell {
+    width: calc(100% / 10);
+    aspect-ratio: 1 / 1;
+    border: 1px solid black;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    background-color: blue;
+}

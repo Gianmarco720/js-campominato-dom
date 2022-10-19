@@ -10,7 +10,7 @@ ed emetto un messaggio in console con il numero della cella cliccata.
 const container = document.querySelector('.my_container');
 const gameBtn = document.querySelector('.start_game');
 const level = document.getElementById('difficulty').value;
-const cellsList = document.querySelector('.cell'); 
+const cellsList = document.getElementsByClassName('cell'); 
 
 
 // dichiaro una variabile per il numero delle celle
@@ -18,18 +18,19 @@ let cellsNum = 100;
 
 // dichiaro una variabile con il numero di bombe
 const numberOfBombs = 16;
+const bombInGame = generateBombs(1, 100)
+console.log(bombInGame);
+
+let score = 0;
 
 // aggiungo un eventlistener per creare la griglia al click del bottone
 gameBtn.addEventListener('click', function () {
-    const bombInGame = generateBombs(1, 100)
-    console.log(bombInGame);
+
     // invoco la funzione per la griglia
-    gridGen(100, container, bombInGame);
+    gridGen(100, container);
     
 
 })
-
-
 
 // FUNCTIONS
 
@@ -44,6 +45,19 @@ function gridGen(num, domEl) {
         cell.addEventListener("click", function () {
             this.classList.toggle("active");
             console.log(`Hai cliccato sulla casella ${i}`);
+            if (isBomb(i, bombInGame)) {
+                cell.classList.add('red');
+                console.log('Hai preso una bomba');
+                this.innerText = 'BOOM';
+                domEl.innerHTML = 'Hai perso! ' + score + ' Punti fatti! Ricarica la pagina per riprovare';
+            } else {
+                console.log('Safe');
+                score++;
+            }
+            if (score == num - 16) {
+                console.log('Hai vinto! ' + score + ' punti fatti');
+                domEl.innerHTML = 'Hai vinto! ' + score + ' Punti fatti! Ricarica la pagina per riprovare';
+            }
         })
     }
 }
@@ -67,4 +81,11 @@ function generateBombs(min, max) {
         }
     }
     return bombs
+}
+
+function isBomb (num, list) {
+    if (list.includes(num)) {
+        return true;
+    } 
+    return false;
 }
